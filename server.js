@@ -2,7 +2,8 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const db = require('./models')
+
+// const db = require('./models')
 
 // middleware & setup
 // TODO: LOOK THIS UP AND SEE IF I NEED TO USE IT AND WHAT IT ACTUALLY DOES
@@ -10,7 +11,8 @@ app.use(express.urlencoded({ extended: false }))
 
 // routes
 app.get('/', (req, res) => {
-    res.send({test: "tester"})
+    test = "tester"
+    res.send({test})
 })
 
 // controllers if have them
