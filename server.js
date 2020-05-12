@@ -1,6 +1,7 @@
 // imports
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 // const db = require('./models')
@@ -8,6 +9,7 @@ const app = express()
 // middleware & setup
 // TODO: LOOK THIS UP AND SEE IF I NEED TO USE IT AND WHAT IT ACTUALLY DOES
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 // routes
 app.get('/', (req, res) => {
