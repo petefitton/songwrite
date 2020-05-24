@@ -2,7 +2,7 @@ import store from './app/store'
 
 // THESE ARE ALL EXAMPLES!!!!!!!!!!!!!!!!!!!! from https://redux.js.org/basics/actions
 
-// action types
+// action types - const definitions
     // export const ADD_TODO = 'ADD_TODO'
     // export const TOGGLE_TODO = 'TOGGLE_TODO'
     // export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
@@ -28,6 +28,7 @@ export const UPDATE_TESTER = 'UPDATE_TESTER'
     //   return { type: SET_VISIBILITY_FILTER, filter }
     // }
 
+// action creator which is used in APP.js file and is a callback in the store.dispatch() method
 export function updateTester() {
     if (store.getState().counter.value !== 0) {
         console.log("1")

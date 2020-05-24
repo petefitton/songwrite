@@ -21,7 +21,9 @@ Redux Documentation: https://redux.js.org/basics/example
 Instrument images: https://starbounder.org/Music#Instruments
 Random Song Titles: https://random-word-api.herokuapp.com/home
 Styled Components: https://levelup.gitconnected.com/building-a-reusable-component-system-with-react-js-and-styled-components-4e9f1018a31c
-
+Docker Toolbox: https://docs.docker.com/toolbox/toolbox_install_mac/
+Redux Store Information: https://stackoverflow.com/questions/49104247/in-redux-where-does-the-state-actually-get-stored/49104335
+Different File Organizations with React and Redux: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 
 
 
@@ -30,7 +32,7 @@ Styled Components: https://levelup.gitconnected.com/building-a-reusable-componen
 ### Elevator Pitch
 Play as a bedroom songwriter by acquiring new instruments and setting up a successful career!  Win the game by gaining 1000 fans.
 
-### User Stories
+### User Stories for MVP
 As a user I want to be able to buy new musical instruments.
 As a user I want to be able to measure my music's success.
 As a user I want to have depth of success across multiple dimensions such as Originality, Popularity, Quality, and Blog Traction
@@ -63,6 +65,7 @@ Axios
 PostGresSQL
 Sequelize
 Jest
+Docker
 
 #### Site Map
 ![Site Map](/readmeAssets/songwriteSITEMAP.jpg)
@@ -86,14 +89,24 @@ Jest
 
 
 #### Redux Store
-Variables that will need to be handled in Redux:
+Information that will need to be handled in Redux:
+New Game Initializations
+    -First instrument name, skill level, and # of slots it fills
+    -Bedroom cost per week, weekly income, and current bank account
+    -Bedroom instrument number of slots - just a number (initially 10)
+    -Fans set to 0
+    Possibly: -Achievements set to an empty array/object
+User has an array of owned instrument objects (instrument is removed when sold)
+Owned instruments have a name, a skill number, number of slots it requires, and a pointer to an image
 
 
 #### Sprint Planning
 
 
 #### Database Structuring
-
+User - Username, Hashed Password (utilize JWT, no connection to Redux)
+All game state saved from a user's account - effectively the full Redux store's information at a given point in time
+Save initial game state to DB when user account is created
 
 #### Routes
 <!-- (Client and Server) -->

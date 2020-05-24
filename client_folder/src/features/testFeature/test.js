@@ -1,3 +1,4 @@
+// importing the const definition
 import {
     // ADD_TODO,
     // TOGGLE_TODO,
@@ -8,12 +9,14 @@ import {
 
 // const { SHOW_ALL } = VisibilityFilters
 
+// defining initial state for use in testPTag function below
 const initialState = {
     // visibilityFilter: VisibilityFilters.SHOW_ALL,
     // todos: [],
     testPTag: "testeroopoopoo"
 }
 
+// REDUCER testPTag function which handles action UPDATE_TESTER and the export below (testPTag is used in store.js file)
 function testPTag(state = initialState.testPTag, action) {
     switch (action.type) {
         case UPDATE_TESTER:
