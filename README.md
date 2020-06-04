@@ -108,7 +108,7 @@ New Game Initializations
     Possibly: -Achievements set to an empty array/object
 User has an array of owned instrument objects (instrument is removed when sold)
 Owned instruments have a name, a skill number, number of slots it requires, and a pointer to an image
-User has an array of song objects - each song has a randomly generated name and a success value (out of 100)
+User has an array of song objects - each song has a randomly generated name, a success value (out of 100), and a boolean of released or not
 User has an array or object that list fulfilled achievements
 
 #### Sprint Planning
