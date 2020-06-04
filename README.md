@@ -84,18 +84,27 @@ Docker
 ![Save Wireframes](/readmeAssets/Wireframes/savescreens.png)
 ![Save Success and Logout Wireframes](/readmeAssets/Wireframes/savesuccesslogoutscreen.png)
 ![Job Promotion Wireframe](/readmeAssets/Wireframes/jobpromotionscreen.png)
+![Insufficient Funds Wireframes](/readmeAssets/Wireframes/insufficientfunds.png)
+![Insufficient Funds Wireframe](/readmeAssets/Wireframes/insufficientfundscont.png)
 
-#### React Components/Tree
-
+#### React Component Trees
+![First set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-1.jpg)
+![Second set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-2.jpg)
+![Third set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-3.jpg)
+![Fourth set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-4.jpg)
+![Fifth set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-5.jpg)
+![Sixth set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-6.jpg)
+![Seventh set of Component Trees](/readmeAssets/ComponentTrees/songwriteComponentTree-Page-7.jpg)
 
 #### Redux Store
 Information that will need to be handled in Redux:
 New Game Initializations
     -First instrument name, skill level, and # of slots it fills
-    -Bedroom cost per week, weekly income, and current bank account
-    -Bedroom instrument number of slots - just a number (initially 10)
+    -Savings in bank account
+    -Bedroom cost per week and Bedroom instrument number of slots (initially 10)
+        Note on Bedroom: Three bedrooms will exist in database. Size of 1 will be initial room. Size 2 and 3 are increasingly larger. Initialization will establish link between user and bedroom of size 1 with necessary statistics stored in Redux store.  Bedroom stats only stored in DB (one single location).
     -Fans set to 0
-    -Job level, starts at 0
+    -Job that provides a weekly income, with job level starting at 0
     Possibly: -Achievements set to an empty array/object
 User has an array of owned instrument objects (instrument is removed when sold)
 Owned instruments have a name, a skill number, number of slots it requires, and a pointer to an image
@@ -103,22 +112,45 @@ User has an array of song objects - each song has a randomly generated name and 
 User has an array or object that list fulfilled achievements
 
 #### Sprint Planning
+My schedule is currently heavily in flux due to my Software Engineering Teaching Assistant position combined with my ongoing job search, so this sprint plan does not have the typical timeline that I usually create.
 
+    Sprint Planning
+    Design Site Map
+    Design Wireframes
+    Design React Component Trees
+    Plan out variables in Redux Store
+    Plan out Database Structure
+Build out Components
+Build Redux files (actions, reducers, const declarations, and reducers combined in store)
+Connect Redux with Components
+Stub out Back-end Routes
+Create Database with model files
+Connect back end with database
+JSON Web Token setup and testing (connection with database)
+Spruce up design with Sass and add all game assets
+Plan out tests
+Build Tests
+Perform tests
+Make changes until all tests pass
+Research containerization
+Deploy with containerization
 
 #### Database Structuring
 User - Username, Hashed Password (utilize JWT, no connection to Redux)
 All game state saved from a user's account - effectively the full Redux store's information at a given point in time
 Save initial game state to DB when user account is created
-
-#### Routes
-<!-- (Client and Server) -->
-
+See note on Bedroom in Redux Store section above.
+![Database Structure Diagram](/readmeAssets/songwriteDB.jpg)
 
 ### MVP
-
+MVP is functionality for game.  Basic pages for each part of "site" as well as Redux fully set up.  Instrument images included in MVP.
 
 ### Stretch Goals/Features
+Stretch goals are primarily cosmetic at this time.  Original background for use on many of not all pages of site.  Further work on a logo or design for the first page at least.  Work on fonts and colors/overall-design.
 
+This project will not utilize test driven development.  Unit testing will be written upon completion of game.  My goal with using Jest on this project is to get more familiarity with it.  As such, I will focus on it once the game is mostly built rather than integrating it from the very beginning for this project.
+
+I also consider the containerization of this project as a stretch goal.  It is not required for the success of the game, but is also something I would like to get experience with.  I will deal with it at the end of the project if I have enough time to put into it.
 
 ### Unit Testing
 
