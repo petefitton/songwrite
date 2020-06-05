@@ -5,20 +5,17 @@
 //Other React components
 
 import React from 'react'
-import Title from './../Title'
-import Form from './../form/Form'
 // import { useSelector, useDispatch } from 'react-redux'
 // import store from './app/store'
 // import { updateTester } from './actions'
 
-function CreateAccount() {
+function Error() {
 
   return (
     <>
-      <Title />
-      <Form labelOne="Create Username" labelTwo="Create Password" btn="Create Account" />
+      <h1>404 Error</h1>
     </>
   )
 }
 
-export default CreateAccount
+export default Error
