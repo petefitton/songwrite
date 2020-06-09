@@ -17,13 +17,13 @@ Live Link:
 <!-- (planning stage, various parts of writing code, testing, issues, technologies) -->
 
 ### Sources
-Redux Documentation: https://redux.js.org/basics/example
-Instrument images: https://starbounder.org/Music#Instruments
-Random Song Titles: https://random-word-api.herokuapp.com/home
-Styled Components: https://levelup.gitconnected.com/building-a-reusable-component-system-with-react-js-and-styled-components-4e9f1018a31c
-Docker Toolbox: https://docs.docker.com/toolbox/toolbox_install_mac/
-Redux Store Information: https://stackoverflow.com/questions/49104247/in-redux-where-does-the-state-actually-get-stored/49104335
-Different File Organizations with React and Redux: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
+- Redux Documentation: https://redux.js.org/basics/example
+- Instrument images: https://starbounder.org/Music#Instruments
+- Random Song Titles: https://random-word-api.herokuapp.com/home
+- Styled Components: https://levelup.gitconnected.com/building-a-reusable-component-system-with-react-js-and-styled-components-4e9f1018a31c
+- Docker Toolbox: https://docs.docker.com/toolbox/toolbox_install_mac/
+- Redux Store Information: https://stackoverflow.com/questions/49104247/in-redux-where-does-the-state-actually-get-stored/49104335
+- Different File Organizations with React and Redux: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 
 
 
@@ -56,16 +56,16 @@ As a user I want to have the option to write music of various types such as indi
 ----
 
 ### Proposed Architecture
--React
--Redux
--Node & Express
--Sass
--JSON Web Token
--Axios
--PostGresSQL
--Sequelize
--Jest
--Docker
+- React
+- Redux
+- Node & Express
+- Sass
+- JSON Web Token
+- Axios
+- PostGresSQL
+- Sequelize
+- Jest
+- Docker
 
 #### Site Map
 ![Site Map](/readmeAssets/songwriteSITEMAP.jpg)
