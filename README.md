@@ -56,16 +56,16 @@ As a user I want to have the option to write music of various types such as indi
 ----
 
 ### Proposed Architecture
-React
-Redux
-Node & Express
-Sass
-JSON Web Token
-Axios
-PostGresSQL
-Sequelize
-Jest
-Docker
+-React
+-Redux
+-Node & Express
+-Sass
+-JSON Web Token
+-Axios
+-PostGresSQL
+-Sequelize
+-Jest
+-Docker
 
 #### Site Map
 ![Site Map](/readmeAssets/songwriteSITEMAP.jpg)
