@@ -14,7 +14,7 @@ function OpeningButton(props) {
 
   return (
     <>
-      <Link to={props.link}>{props.text}</Link>
+      <Link style={{textDecoration: "none", color: "black", marginBottom: "10px"}} to={props.link}>{props.text}</Link>
     </>
   )
 }

@@ -13,7 +13,7 @@ function FormField() {
 
   return (
     <>
-      <input></input>
+      <input style={{width: "200px", height: "30px", padding: "0 5px"}}></input>
     </>
   )
 }

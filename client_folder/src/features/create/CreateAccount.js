@@ -16,7 +16,7 @@ function CreateAccount() {
   return (
     <>
       <Title />
-      <Form labelOne="Create Username" labelTwo="Create Password" btn="Create Account" />
+      <Form labelOne="Create Username" labelTwo="Create Password" btn="Create Account" link="/new" />
     </>
   )
 }

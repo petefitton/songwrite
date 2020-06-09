@@ -5,6 +5,7 @@
 //Other React components
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { useSelector, useDispatch } from 'react-redux'
 // import store from './app/store'
 // import { updateTester } from './actions'
@@ -13,7 +14,7 @@ function Btn(props) {
 
   return (
     <>
-      <button>{props.text}</button>
+      <Link to={props.link} id="Btn">{props.text}</Link>
     </>
   )
 }
