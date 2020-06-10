@@ -9,12 +9,12 @@ import React from 'react'
 // import store from './app/store'
 // import { updateTester } from './actions'
 
-function NavElement() {
+function NavElement(props) {
 
   return (
     <>
       {/* <img></img> */}
-      <p style={{fontSize: "10px"}}>Element</p>
+      <p style={{fontSize: "10px"}}>{props.name}</p>
     </>
   )
 }

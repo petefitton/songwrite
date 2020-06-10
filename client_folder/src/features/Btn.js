@@ -14,7 +14,7 @@ function Btn(props) {
 
   return (
     <>
-      <Link to={props.link} id="Btn">{props.text}</Link>
+      <Link to={props.link} class="btn">{props.text}</Link>
     </>
   )
 }
