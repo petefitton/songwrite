@@ -5,16 +5,20 @@
 //Other React components
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { useSelector, useDispatch } from 'react-redux'
 // import store from './app/store'
 // import { updateTester } from './actions'
 
 function NavElement(props) {
 
+  let navLocation = "/" + props.name.toLowerCase()
+
   return (
     <>
       {/* <img></img> */}
-      <p style={{fontSize: "10px"}}>{props.name}</p>
+      <Link to={navLocation} style={{fontSize: "20px", color: "black", textDecoration: "none"}}>{props.name}</Link>
+      {/* <p style={{fontSize: "10px"}}>{props.name}</p> */}
     </>
   )
 }

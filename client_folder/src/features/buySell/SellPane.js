@@ -14,6 +14,7 @@ function SellPane() {
 
   return (
     <>
+      {/* SellPane should appropriately sell instruments for both situations of buySell or insufffunds */}
       {/* function for displaying each owned instrument */}
       <SellInstrument />
     </>

@@ -13,7 +13,7 @@ import NavElement from './NavElement'
 function NavBar() {
 
   return (
-    <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", backgroundColor: "rgb(97,140,236)", borderTop: "1px solid black", position: "absolute", bottom: "0"}}>
+    <div style={{display: "flex", width: "100%", justifyContent: "space-evenly", backgroundColor: "rgb(97,140,236)", borderTop: "1px solid black", position: "absolute", bottom: "0", minHeight: "50px"}}>
       <NavElement name="Save" />
       <NavElement name="Achievements" />
       <NavElement name="Logout" />
