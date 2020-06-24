@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const achievement = sequelize.define('achievement', {
     name: {
       type: DataTypes.STRING,
+      unique: true,
       validate: {
         notEmpty: true
       }

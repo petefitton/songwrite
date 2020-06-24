@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const job = sequelize.define('job', {
     level: {
       type: DataTypes.INTEGER,
+      unique: true,
       validate: {
         notEmpty: true
       }

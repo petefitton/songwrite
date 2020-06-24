@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const bedroom = sequelize.define('bedroom', {
     size: {
       type: DataTypes.INTEGER,
+      unique: true,
       validate: {
         notEmpty: true
       }
