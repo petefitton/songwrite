@@ -17,7 +17,7 @@ function InsufficientBedroom() {
       <p>You have downgraded your bedroom</p>
       <ContinueBtn />
       {/* When bedroom is downgraded, insuff funds should be checked again before proceeding back to Menu */}
-      {/* meaning ContinueBtn may need to be changed */}
+      {/* meaning ContinueBtn may need to be change */}
     </>
   )
 }
