@@ -5,7 +5,7 @@
 //Other React components
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // import { useSelector, useDispatch } from 'react-redux'
 // import store from './app/store'
 // import { updateTester } from './actions'
@@ -14,7 +14,7 @@ function Btn(props) {
 
   return (
     <>
-      <Link to={props.link} class="btn">{props.text}</Link>
+      <button onClick={(e) => props.func(e)} className="btn">{props.text}</button>
     </>
   )
 }

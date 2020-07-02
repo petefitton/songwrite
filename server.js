@@ -1,18 +1,19 @@
 // imports
 require('dotenv').config()
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const cors = require('cors')
-const jwt = require('jsonwebtoken')
-const {verify} = require('jsonwebtoken')
-const {hash, compare} = require('bcrypt')
-const rowdyLogger = require('rowdy-logger')
+let express = require('express')
+let cookieParser = require('cookie-parser')
+let cors = require('cors')
+// let jwt = require('jsonwebtoken')
+let expressJwt = require('express-jwt')
+// let {verify} = require('jsonwebtoken')
+// let {hash, compare} = require('bcrypt')
+let rowdyLogger = require('rowdy-logger')
 
-// const db = require('./models')
+// let db = require('./models')
 
 // middleware & setup
-const app = express()
-const rowdyResults = rowdyLogger.begin(app)
+let app = express()
+let rowdyResults = rowdyLogger.begin(app)
 // JWT tutorial uses extended: true so that there is support for URL-encoded bodies
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
@@ -22,15 +23,20 @@ app.use(cookieParser())
 // allows me to be able to read body data by supporting JSON-encoded data/bodies
 app.use(express.json())
 
+
+
+app.use('/auth', require('./controllers/auth'))
+
 // controllers if have them
-app.use('/auth', jwt({
-    secret: process.env.JWT_SECRET
-}).unless({
-    path: [
-        { url: '/auth/login', methods: ['POST'] },
-        { url: '/auth/signup', methods: ['POST'] }
-    ]
-}), require('./controllers/auth'))
+// app.use('/auth', expressJwt({
+//     secret: process.env.JWT_SECRET,
+//     algorithms: ['RS256']
+// }).unless({
+//     path: [
+//         { url: '/auth/login', methods: ['POST'] },
+//         { url: '/auth/signup', methods: ['POST'] }
+//     ]
+// }), require('./controllers/auth'))
 
 
 
@@ -47,7 +53,7 @@ app.get('*', (req, res) => {
 })
 
 // port setup
-const server = app.listen(process.env.PORT || 8000, () => {
+let server = app.listen(process.env.PORT || 8000, () => {
     rowdyResults.print()
 })
 

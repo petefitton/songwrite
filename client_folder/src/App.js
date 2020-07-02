@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
+import {userContext} from './userContext'
+import {decode as jwtDecode} from 'jsonwebtoken'
 // import React, { useState, useEffect } from 'react'
 // import { useSelector, useDispatch } from 'react-redux'
 // import axios from 'axios'
-// import logo from './logo.svg';
 import { Counter } from './features/counter/Counter'
 import { TestComp } from './features/testFeature/TestComp'
 import OpeningScreen from './features/opening/OpeningScreen'
@@ -42,6 +43,7 @@ import { updateTester } from './actions'
 
 
 function App() {
+  let [user, setUser] = useState(null)
   // const dispatch = useDispatch()
   // store.subscribe(() => dispatch(updateTester()))
   // const [test, setTest] = useState('')
@@ -59,6 +61,33 @@ function App() {
   //   store.dispatch(updateTester())
   // }, [counterooni])
 
+  useEffect(() => {
+    decodeToken(null)
+  }, [])
+
+  const updateUser = newToken => {
+    if (newToken) {
+      localStorage.setItem('sernToken', newToken)
+      decodeToken(newToken)
+    } else {
+      setUser(null)
+    }
+  }
+
+  const decodeToken = existingToken => {
+    let token = existingToken || localStorage.getItem('sernToken')
+    if (token) {
+      let decoded = jwtDecode(token)
+      if (!decoded || Date.now() >= decoded.exp * 1000) {
+        setUser(null)
+      } else {
+        setUser(decoded)
+      }
+    } else {
+      setUser(null)
+    }
+  }
+
   const testChange = function() {
     store.dispatch(updateTester())
   }
@@ -67,86 +96,88 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header">
-          {/* <h1>SONGWRITE</h1> */}
-          {/* <button onClick={testChange}>TRY IT OUT</button> */}
-          {/* <TestComp /> */}
-          {/* <Counter /> */}
-          <Switch>
-            <Route exact path="/" render={() => <OpeningScreen />} />
-            <Route exact path="/create" render={() => <CreateAccount />} />
-            <Route exact path="/login" render={() => <Login />} />
-            <Route exact path="/new" render={() => <NewGame />} />
-            <Route exact path="/menu" render={() => <MainMenu />} />
-            <Route exact path="/practice" render={() => <Practice />} />
-            <Route exact path="/practiced" render={() => <PracticeResult />} />
-            <Route exact path="/buysell" render={() => <BuySell />} />
-            <Route exact path="/upgraderoom" render={() => <UpgradeRoom />} />
-            <Route exact path="/upgradedroom" render={() => <UpgradeRoomResult />} />
-            <Route exact path="/writerecord" render={() => <WriteRecord />} />
-            <Route exact path="/wroterecorded" render={() => <WriteRecordResult />} />
-            <Route exact path="/release" render={() => <Release />} />
-            <Route exact path="/released" render={() => <ReleaseResult />} />
-            <Route exact path="/social" render={() => <SocialMedia />} />
-            <Route exact path="/socialposted" render={() => <SocialMediaResult />} />
-            <Route exact path="/achievements" render={() => <Achievements />} />
-            <Route exact path="/save" render={() => <Save />} />
-            <Route exact path="/saving" render={() => <Saving />} />
-            <Route exact path="/saved" render={() => <Saved />} />
-            <Route exact path="/logout" render={() => <Logout />} />
-            <Route exact path="/promotion" render={() => <Promotion />} />
-            <Route exact path="/insufffunds" render={() => <InsufficientFunds />} />
-            <Route exact path="/insuffsell" render={() => <InsufficientSell />} />
-            <Route exact path="/insuffroom" render={() => <InsufficientBedroom />} />
-            <Route path="*" render={() => <Error />} />
-          </Switch>
+      <userContext.Provider value={user} >
+        <div className="App">
+          <header className="App-header">
+            {/* <h1>SONGWRITE</h1> */}
+            {/* <button onClick={testChange}>TRY IT OUT</button> */}
+            {/* <TestComp /> */}
+            {/* <Counter /> */}
+            <Switch>
+              <Route exact path="/" render={() => <OpeningScreen />} />
+              <Route exact path="/create" render={() => <CreateAccount updateUser={updateUser} />} />
+              <Route exact path="/login" render={() => <Login updateUser={updateUser} />} />
+              <Route exact path="/new" render={() => <NewGame updateUser={updateUser} />} />
+              <Route exact path="/menu" render={() => <MainMenu updateUser={updateUser} />} />
+              <Route exact path="/practice" render={() => <Practice updateUser={updateUser} />} />
+              <Route exact path="/practiced" render={() => <PracticeResult updateUser={updateUser} />} />
+              <Route exact path="/buysell" render={() => <BuySell updateUser={updateUser} />} />
+              <Route exact path="/upgraderoom" render={() => <UpgradeRoom updateUser={updateUser} />} />
+              <Route exact path="/upgradedroom" render={() => <UpgradeRoomResult updateUser={updateUser} />} />
+              <Route exact path="/writerecord" render={() => <WriteRecord updateUser={updateUser} />} />
+              <Route exact path="/wroterecorded" render={() => <WriteRecordResult updateUser={updateUser} />} />
+              <Route exact path="/release" render={() => <Release updateUser={updateUser} />} />
+              <Route exact path="/released" render={() => <ReleaseResult updateUser={updateUser} />} />
+              <Route exact path="/social" render={() => <SocialMedia updateUser={updateUser} />} />
+              <Route exact path="/socialposted" render={() => <SocialMediaResult updateUser={updateUser} />} />
+              <Route exact path="/achievements" render={() => <Achievements updateUser={updateUser} />} />
+              <Route exact path="/save" render={() => <Save updateUser={updateUser} />} />
+              <Route exact path="/saving" render={() => <Saving updateUser={updateUser} />} />
+              <Route exact path="/saved" render={() => <Saved updateUser={updateUser} />} />
+              <Route exact path="/logout" render={() => <Logout updateUser={updateUser} />} />
+              <Route exact path="/promotion" render={() => <Promotion updateUser={updateUser} />} />
+              <Route exact path="/insufffunds" render={() => <InsufficientFunds updateUser={updateUser} />} />
+              <Route exact path="/insuffsell" render={() => <InsufficientSell updateUser={updateUser} />} />
+              <Route exact path="/insuffroom" render={() => <InsufficientBedroom updateUser={updateUser} />} />
+              <Route path="*" render={() => <Error />} />
+            </Switch>
 
 
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          {/* <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <span>
-            <span>Learn </span>
-            <a
-              className="App-link"
-              href="https://reactjs.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              React
-            </a>
-            <span>, </span>
-            <a
-              className="App-link"
-              href="https://redux.js.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Redux
-            </a>
-            <span>, </span>
-            <a
-              className="App-link"
-              href="https://redux-toolkit.js.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Redux Toolkit
-            </a>
-            ,<span> and </span>
-            <a
-              className="App-link"
-              href="https://react-redux.js.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              React Redux
-            </a>
-          </span> */}
-        </header>
-      </div>
+            {/* <img src={logo} className="App-logo" alt="logo" /> */}
+            {/* <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+            <span>
+              <span>Learn </span>
+              <a
+                className="App-link"
+                href="https://reactjs.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                React
+              </a>
+              <span>, </span>
+              <a
+                className="App-link"
+                href="https://redux.js.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Redux
+              </a>
+              <span>, </span>
+              <a
+                className="App-link"
+                href="https://redux-toolkit.js.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Redux Toolkit
+              </a>
+              ,<span> and </span>
+              <a
+                className="App-link"
+                href="https://react-redux.js.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                React Redux
+              </a>
+            </span> */}
+          </header>
+        </div>
+      </userContext.Provider>
     </BrowserRouter>
   );
 }

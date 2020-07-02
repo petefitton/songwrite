@@ -20,7 +20,7 @@ function Form(props) {
       <FormField />
       <FormLabel text={props.labelTwo} />
       <FormField />
-      <Btn text={props.btn} link={props.link} />
+      <Btn func={props.func} text={props.btn} link={props.link} />
     </>
   )
 }
