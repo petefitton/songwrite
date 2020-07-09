@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {Switch, Route, BrowserRouter} from 'react-router-dom'
-import {userContext} from './userContext'
+import {UserContext} from './UserContext'
 import {decode as jwtDecode} from 'jsonwebtoken'
-// import React, { useState, useEffect } from 'react'
 // import { useSelector, useDispatch } from 'react-redux'
 // import axios from 'axios'
-import { Counter } from './features/counter/Counter'
-import { TestComp } from './features/testFeature/TestComp'
 import OpeningScreen from './features/opening/OpeningScreen'
 import CreateAccount from './features/create/CreateAccount'
-// import Form from './features/form/Form'
 import Login from './features/login/Login'
 import NewGame from './features/newGame/NewGame'
 import MainMenu from './features/mainMenu/MainMenu'
@@ -37,13 +33,16 @@ import Error from './Error'
 import './App.css'
 import store from './app/store'
 import { updateTester } from './actions'
+import { updateUserInfo } from './actions'
+// import { Counter } from './features/counter/Counter'
+// import { TestComp } from './features/testFeature/TestComp'
 // import {
 //   selectCount,
 // } from './features/counter/counterSlice'
 
 
 function App() {
-  let [user, setUser] = useState(null)
+let [user, setUser] = useState(null)
   // const dispatch = useDispatch()
   // store.subscribe(() => dispatch(updateTester()))
   // const [test, setTest] = useState('')
@@ -61,42 +60,51 @@ function App() {
   //   store.dispatch(updateTester())
   // }, [counterooni])
 
-  useEffect(() => {
-    decodeToken(null)
-  }, [])
+useEffect(() => {
+  decodeToken(null)
+}, [])
 
-  const updateUser = newToken => {
-    if (newToken) {
-      localStorage.setItem('sernToken', newToken)
-      decodeToken(newToken)
-    } else {
+const updateUser = newToken => {
+  if (newToken) {
+    localStorage.setItem('sernToken', newToken)
+    decodeToken(newToken)
+  } else {
+    setUser(null)
+    store.dispatch(updateUserInfo(null))
+  }
+}
+
+const decodeToken = existingToken => {
+  let token = existingToken || localStorage.getItem('sernToken')
+  if (token) {
+    let decoded = jwtDecode(token)
+    if (!decoded || Date.now() >= decoded.exp * 1000) {
       setUser(null)
-    }
-  }
-
-  const decodeToken = existingToken => {
-    let token = existingToken || localStorage.getItem('sernToken')
-    if (token) {
-      let decoded = jwtDecode(token)
-      if (!decoded || Date.now() >= decoded.exp * 1000) {
-        setUser(null)
-      } else {
-        setUser(decoded)
-      }
+      store.dispatch(updateUserInfo(null))
     } else {
-      setUser(null)
+      setUser(decoded)
+      console.log(`This is the user before dispatching to Redux store: ${decoded}`)
+      store.dispatch(updateUserInfo(decoded))
     }
+  } else {
+    setUser(null)
+    store.dispatch(updateUserInfo(null))
   }
+}
 
-  const testChange = function() {
-    store.dispatch(updateTester())
-  }
+  // const testChange = function() {
+  //   store.dispatch(updateTester())
+  // }
+
+  // let user = function() {
+  //   store.dispatch(updateUserInfo(user))
+  // }
 
   // const mapStateToProps = state => ({ updateTester })
 
   return (
     <BrowserRouter>
-      <userContext.Provider value={user} >
+      <UserContext.Provider value={user} >
         <div className="App">
           <header className="App-header">
             {/* <h1>SONGWRITE</h1> */}
@@ -177,7 +185,7 @@ function App() {
             </span> */}
           </header>
         </div>
-      </userContext.Provider>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

@@ -4,19 +4,28 @@
 //Redux store & other Redux pieces if applicable (actions, reducers, constants)
 //Other React components
 
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import Btn from './../Btn'
 import NavBar from './NavBar'
+import {UserContext} from '../../UserContext'
 // import { useSelector, useDispatch } from 'react-redux'
 // import store from './app/store'
 // import { updateTester } from './actions'
 
 function MainMenu() {
+  // let user;
+  let user = useContext(UserContext)
+
+  // useEffect(() => {
+  //   user = useContext(UserContext)
+  // }, [])
+  // setTimeout(console.log(user), 5000)
+  // console.log(user)
 
   return (
     <>
-      <p className="username"style={{fontSize: "calc(5px + 2vmin)", fontWeight: "bold", position: "absolute", top: "-5px", left: "20px"}}>Username</p>
-      <p style={{fontSize: "calc(2vmin)"}}>Fans: 0</p>
+      <p className="username"style={{fontSize: "calc(5px + 2vmin)", fontWeight: "bold", position: "absolute", top: "-5px", left: "20px"}}>{user.name}</p>
+      <p style={{fontSize: "calc(2vmin)"}}>Fans: {user.fans}</p>
       <div style={{display: "flex", flexWrap: "wrap"}}>
         <Btn link="/practice" text="Practice Instrument" />
         <Btn link="/writerecord" text="Write & Record Song" />

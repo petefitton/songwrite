@@ -1,4 +1,4 @@
 import React from 'react'
-const userContext = React.createContext({user: {}})
+const UserContext = React.createContext({user: {}})
 
-export {userContext}
+export {UserContext}

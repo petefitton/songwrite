@@ -9,7 +9,7 @@ let expressJwt = require('express-jwt')
 // let {hash, compare} = require('bcrypt')
 let rowdyLogger = require('rowdy-logger')
 
-// let db = require('./models')
+let db = require('./models')
 
 // middleware & setup
 let app = express()
@@ -46,6 +46,15 @@ app.use('/auth', require('./controllers/auth'))
 //     test = "tester"
 //     res.send({test})
 // })
+
+app.get('/user/:username', (req, res) => {
+    db.user.findOne({where: {name: req.params.username}})
+    .then(user => {
+        console.log("successfully found user")
+        console.log(user)
+        return user
+    }).catch(err => console.log(err))
+})
 
 // 404 Page/Catch-All
 app.get('*', (req, res) => {
